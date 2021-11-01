@@ -1,18 +1,141 @@
 <!DOCTYPE html>
 <html>
-<body>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {
+        'packages':['geochart'],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+      });
+      google.charts.setOnLoadCallback(drawRegionsMap);
 
-<h2>Header</h2>
+      function drawRegionsMap() {
+        var data = google.visualization.arrayToDataTable([
+          ['Country', 'Popularity'],
+          ['SA', 700],
+          ['Iran', 700],
+       ['Jordan', 250],
+        ['Syria', 600],
+        ['Iraq', 550],
+        ['Yemen', 500],
+		['UAE', 300],
+		['Oman', 300],
+		['Qatar', 500],
+		['Bahrain', 200],
+		['Israel', 700],
+		['Kuwait', 200],
+		['Egypt', 650],
+		['Turkey', 700],
+		['Azerbaijan', 500],
+		['Armenia', 400],
+		['Afghanistan', 650],
+		['Pakistan', 650],
+		['Turkmenistan', 450],
+		['Uzbekistan', 500],
+		['KG', 300],
+		['Kazakhstan', 300],
+		['Lebanon', 500],
+		['Libya', 600],
+		['Tunisia', 400],
+		['Sudan', 500],
+		['Somalia', 500],
+		['Chad', 300],
+		['Algeria', 500],
+		['Niger', 200],
+		['Mali', 300],
+		['Morocco', 550],
+		['South Sudan', 400],
+		['Tanzania', 250],
+		['Mozambique', 250],
+		['Malaysia', 500],
+		['Maldives', 200],
+		['Indonesia', 600],
+		['BA', 400],
+		['Singapore', 500],
+		['Ethiopia', 300],
+		['Mauritania', 400],
+		['Eritrea', 400],
+        ]);
 
-<p id="demo">A Paragraph.</p>
+        var options = {};
 
-<button type="button" onclick="myFunction()">Try it</button>
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
-<script>
-function myFunction() {
-  document.getElementById("demo").innerHTML = "Paragraph changed.";
-}
-</script>
+        chart.draw(data, options);
+		
+		
+      }
+	  
+	  //menu
+		var cnum = 26;
+		var l;
 
-</body>
-</html> 
+		function check() {
+		  cnum+=25;
+			return cnum;
+		}
+
+		function reload(){
+			var container = document.getElementById("menu");
+			var content = container.innerHTML;
+			container.innerHTML= content; 
+			
+
+		}
+
+
+		function toggle() {
+		  var x = document.getElementById("menu");
+		  if (x.style.display === "none") {
+			x.style.display = "block";
+		  } else {
+			x.style.display = "none";
+		  }
+		}
+    </script>
+	<style>
+
+	aside{
+		position: absolute;
+		text-align: center;
+		background-color: slateGrey;
+		border: 2px solid black;
+		bottom: 5px;
+		left:5px;
+		padding: 20px;
+		width:20%;
+		height:20%;
+	}
+
+
+
+	</style>
+  </head>
+  <body>
+	<button onclick="toggle()">Click Me</button>
+	<button onclick="check()">check1</button>
+	<button onclick="reload()">reload</button>
+
+	
+
+	
+    <div id="regions_div" style="width: 900px; height: 500px;"></div>
+	
+	
+	<aside id="menu">
+		<h1>Menu</h1>
+		<p>Current Number: <script type="text/javascript">
+								document.write(cnum)
+							</script>
+		</p>
+		<p>Loyalty: </p>
+		
+	</aside>
+	
+	<footer>
+	<p>Made By Nabeel Syed</p>
+	</footer>
+  </body>
+</html>
